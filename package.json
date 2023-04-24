@@ -1,0 +1,19 @@
+{
+  "name": "ad-chroma",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "fastest-validator": "^1.17.0",
+    "hnswlib-node": "^1.4.2"
+  },
+  "devDependencies": {
+    "@types/node": "^18.16.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.4"
+  },
+  "engines": {
+    "node": ">=14"
+  }
+}
