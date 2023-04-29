@@ -7,6 +7,7 @@ import {
   CollectionRowMetadatachema,
 } from "../types/collection-row";
 import { SearchQueryInput, SearchQueryInputSchema } from "../types/query-input";
+import { ApiConfig, ApiConfigSchema } from "../types/api-config";
 
 export class Validators {
   private _validator: FastestValidator;
@@ -33,6 +34,10 @@ export class Validators {
 
   public validateSearchQueryInput(searchInput: SearchQueryInput) {
     return this.validate(SearchQueryInputSchema, searchInput);
+  }
+
+  public validateApiConfig(apiConfig: ApiConfig) {
+    return this.validate(ApiConfigSchema, apiConfig);
   }
 
   private validate<T>(schema: ValidationSchema, data: unknown) {

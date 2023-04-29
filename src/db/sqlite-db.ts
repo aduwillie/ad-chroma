@@ -11,11 +11,12 @@ import { EmbeddingRow } from "../types/embedding-row";
 import { EmbeddingInput } from "../types/embedding-input";
 import { QueryInput, SearchQueryInput } from "../types/query-input";
 import { IndexSearchResult, SearchResult } from "../types/index-search-result";
+import { Db } from "../types/db";
 
 const COLLECTIONS_TABLE_NAME = "collections";
 const EMBEDDINGS_TABLE_NAME = "embeddings";
 
-export class SqliteDb {
+export class SqliteDb implements Db {
   private _validator: Validators;
   private _knex: Knex<unknown, unknown>;
   private _indexCache: { [collectionId: string]: DbIndex };
