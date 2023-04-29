@@ -1,6 +1,12 @@
-import FastestValidator from "fastest-validator";
+import FastestValidator, { ValidationSchema } from "fastest-validator";
 import { IndexConfig, IndexConfigSchema } from "../types/index-config";
 import { IndexData, IndexDataSchema } from "../types/index-data";
+import { DbConfig, DbConfigSchema } from "../types/db-config";
+import {
+  CollectionRowMetadata,
+  CollectionRowMetadatachema,
+} from "../types/collection-row";
+import { SearchQueryInput, SearchQueryInputSchema } from "../types/query-input";
 
 export class Validators {
   private _validator: FastestValidator;
@@ -10,12 +16,27 @@ export class Validators {
   }
 
   public validateIndexConfig(indexConfig: IndexConfig) {
-    const check = this._validator.compile(IndexConfigSchema);
-    return check(indexConfig);
+    return this.validate(IndexConfigSchema, indexConfig);
   }
 
   public validateIndexData(indexData: IndexData) {
-    const check = this._validator.compile(IndexDataSchema);
-    return check(indexData);
+    return this.validate(IndexDataSchema, indexData);
+  }
+
+  public validateDbConfig(dbConfig: DbConfig) {
+    return this.validate(DbConfigSchema, dbConfig);
+  }
+
+  public validateCollectionRowMetadata(metadata: CollectionRowMetadata) {
+    return this.validate(CollectionRowMetadatachema, metadata);
+  }
+
+  public validateSearchQueryInput(searchInput: SearchQueryInput) {
+    return this.validate(SearchQueryInputSchema, searchInput);
+  }
+
+  private validate<T>(schema: ValidationSchema, data: unknown) {
+    const check = this._validator.compile(schema);
+    return check(data);
   }
 }

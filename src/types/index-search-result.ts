@@ -3,3 +3,8 @@ export type IndexSearchResult = {
   distance: number;
   embedding: number[];
 };
+
+export type SearchResult = IndexSearchResult & {
+  document: string;
+  documentId: string;
+};
